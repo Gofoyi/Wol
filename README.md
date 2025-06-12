@@ -1,4 +1,5 @@
 一个基于Web的远程Windows主机电源管理解决方案，支持网络唤醒(WOL)和远程睡眠功能。
+A web-based remote Windows host power management solution that supports Wake-on-LAN (WOL) and remote sleep functions.
 
 [![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)](https://python.org)
 [![Flask](https://img.shields.io/badge/Flask-2.0+-green.svg)](https://flask.palletsprojects.com)
