@@ -8,11 +8,11 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-# Windows主机SSH连接配置
-WINDOWS_HOST_IP = "192.168.124.2"  # 请替换为实际IP
-WINDOWS_SSH_USER = "zzz81"  # 请替换为实际用户名
-WINDOWS_SSH_PASSWORD = "810520440+"  # 请替换为实际密码
-WINDOWS_SSH_PORT = 22
+# Windows主机SSH连接配置 - 从环境变量读取
+WINDOWS_HOST_IP = os.getenv('WINDOWS_HOST_IP', '192.168.1.100')  # 请替换为实际IP
+WINDOWS_SSH_USER = os.getenv('WINDOWS_SSH_USER', 'your_username')  # 请替换为实际用户名
+WINDOWS_SSH_PASSWORD = os.getenv('WINDOWS_SSH_PASSWORD', 'your_password')  # 请替换为实际密码
+WINDOWS_SSH_PORT = int(os.getenv('WINDOWS_SSH_PORT', '22'))
 
 def send_magic_packet(mac_address, broadcast_ip='255.255.255.255', port=9):
     """发送Magic包唤醒设备"""
