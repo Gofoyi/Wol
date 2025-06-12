@@ -6,8 +6,8 @@ import json
 app = Flask(__name__)
 
 # Ubuntu服务器的DDNS域名
-UBUNTU_SERVER_HOST = "android.gofoyi.shop"
-UBUNTU_PORT = 5000
+UBUNTU_SERVER_HOST = os.getenv('UBUNTU_SERVER_HOST', 'your-ubuntu-server.domain.com')
+UBUNTU_PORT = int(os.getenv('UBUNTU_PORT', '5000'))
 
 # Windows主机的MAC地址
 WINDOWS_MAC = "74:56:3C:CF:61:00"
