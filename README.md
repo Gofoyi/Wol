@@ -95,18 +95,19 @@ pip3 install flask requests paramiko
 #### 配置服务
 ```bash
 # 复制脚本
-sudo cp wol_script.py /home/ubuntu/
-sudo chown ubuntu:ubuntu /home/ubuntu/wol_script.py
+mkdir Wol
+sudo cp wol.py ~/Wol
 
 # 编辑配置
-nano /home/ubuntu/wol_script.py
+nano /home/ubuntu/wol.py
 # 修改以下变量：
 # WINDOWS_HOST_IP = "192.168.1.100"  # Windows主机内网IP
 # WINDOWS_SSH_USER = "your_username"  # SSH用户名
 # WINDOWS_SSH_PASSWORD = "your_password"  # SSH密码
-
-# 创建系统服务
-sudo bash deploy_updated.sh
+```
+#### 启动服务
+```bash
+python3 wol.py
 ```
 
 ### 4. 配置云服务器
@@ -114,6 +115,16 @@ sudo bash deploy_updated.sh
 #### 安装依赖
 ```bash
 pip3 install flask requests
+```
+
+#### 配置服务
+```bash
+# 复制脚本
+mkdir Wol
+cd Wol
+mkdir template
+sudo cp cloud_server.py ~/Wol
+sudo cp index.html ~/Wol/template
 ```
 
 #### 配置参数
@@ -157,7 +168,9 @@ python3 cloud_server.py
 
 ### Ubuntu服务器配置
 
-1. **网络配置**
+1. **网络配置与要求**
+   - 公网ipv6地址
+   - 端口5000开放
    ```bash
    # 确保IPv6连接正常
    ping6 -c 3 2001:4860:4860::8888
@@ -182,7 +195,7 @@ python3 cloud_server.py
 ### 云服务器配置
 
 1. **网络要求**
-   - 公网IPv6地址
+   - 公网IPv4地址与公网ipv6地址
    - 端口80开放
    - 与Ubuntu服务器IPv6连通
 
@@ -212,7 +225,7 @@ python3 cloud_server.py
 ```bash
 python3 wol.py
 ```
-服务运行在 `http://[::]:5000` (支持IPv4和IPv6)
+服务运行在 `http://[::]:5000` (支持内网IPv4和外网IPv6)
 
 ### 2. 启动云服务器
 
