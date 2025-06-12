@@ -5,12 +5,12 @@ import json
 
 app = Flask(__name__)
 
-# Ubuntu服务器的DDNS域名
+# Ubuntu服务器的域名
 UBUNTU_SERVER_HOST = os.getenv('UBUNTU_SERVER_HOST', 'your-ubuntu-server.domain.com')
 UBUNTU_PORT = int(os.getenv('UBUNTU_PORT', '5000'))
 
 # Windows主机的MAC地址
-WINDOWS_MAC = "74:56:3C:CF:61:00"
+WINDOWS_MAC = "输入自己的网卡MAC地址"
 
 @app.route('/')
 def index():
